@@ -12,5 +12,5 @@
 ## References
 
 - _General Aviation Aircraft Design. Applied Methods and Procedures_, Snorri Gudmundsson
-- _Conceptual Aircraft Design_, Daniel P. Raymer
+- _Aircraft Design : A Conceptual Approach_, Daniel P. Raymer
 
