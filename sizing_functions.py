@@ -68,7 +68,7 @@ def neutral_point(ht_arm, ht_S, ht_AR):
 
 #---- PARASITIC DRAG ----
 def parasitic_drag(\
-        V, w_x_tr, skin_roughness,\
+        V, skin_roughness, w_x_tr, \
         ht_dim, ht_x_tr, vt_dim, vt_x_tr,\
         fus_S_wet, fus_x_tr):
 

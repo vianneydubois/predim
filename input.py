@@ -1,9 +1,9 @@
 #---- FUSELAGE ----
-fus_width = 0.25
-fus_height = 0.25
-fus_length = 2.2
-fus_S_wet = 0
-fus_volume = 0
+fus_width = 0.252
+fus_height = 0.252
+fus_length = 2.085
+fus_S_wet = 1.6
+fus_volume = 0.094
 
 #---- WEIGHT ----
 MTOW = 24
@@ -25,3 +25,9 @@ w_C_l_alpha = 5.85 # E423, XFOIL prediction
 
 #---- HTP AEROFOIL ----
 ht_C_l_alpha = 5
+ht_t_c = 0.12
+ht_x_c_max_t = 0.3
+
+#---- VTP AEROFOIL ----
+vt_t_c = 0.12
+vt_x_c_max_t = 0.3
