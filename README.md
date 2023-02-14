@@ -11,7 +11,7 @@
 
 ## Variables naming
 Generic : a variable containing the value of property `prop` of the component `comp` is written `comp_prop`. 
-_Example :_ : The wing surface area is represented by the variable `w_S`
+_Example :_ The wing surface area is represented by the variable `w_S`
 
 List of component prefixes :
 - `fus` : fuselage
