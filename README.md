@@ -16,7 +16,6 @@ _Example :_ The wing surface area is represented by the variable `w_S`
 List of component prefixes :
 - `fus` : fuselage
 - `w` : wing
-- `tail` : tail/empennage
 - `ht` : horizontal tailplane
 - `vt` : vertical taiplane
 - `ref` : reference value (for $S_{ref}$, $c_{ref}$, ...)
@@ -26,4 +25,5 @@ List of component prefixes :
 
 - _General Aviation Aircraft Design. Applied Methods and Procedures_, Snorri Gudmundsson
 - _Aircraft Design : A Conceptual Approach_, Daniel P. Raymer
+- _Aérodynamique Avancée de l'Avion_, lecture notes, Jean-Marc Moschetta
 
