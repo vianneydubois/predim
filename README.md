@@ -9,6 +9,17 @@
 - `flaps.ipynb` : provides an estimation of the spanwise length of flaps required to achieve the targat $C_{Lmax}$
 - `sizing_functions.py` : sets all other Jupyter Notebooks into functions than can be used for sizing loops
 
+## Variable naming
+Generic : a variable containing the value of property `prop` of the component `comp` is written `comp_prop`. 
+++Example :++ : The wing surface is represented by the variable `w_S`
+
+List of component prefixes :
+- `fus` : fuselage
+- `w` : wing
+- `ht` : horizontal tailplane
+- `vt` : vertical taiplane
+- `ref` : reference value
+
 ## References
 
 - _General Aviation Aircraft Design. Applied Methods and Procedures_, Snorri Gudmundsson
