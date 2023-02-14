@@ -24,19 +24,20 @@ def tailplane_sizing(ht_V, ht_arm, ht_AR, ht_taper, \
     return [[ht_S, ht_span, ht_root_chord],[vt_S, vt_span, vt_root_chord]]
 
 #---- TE FLAPS ----
-def flaps_sizing(flaps_chord_fraction, foil_Delta_C_l_max):
+def flaps_sizing(flaps_chord_fraction, Delta_C_l_max):
     # WING
     w_C_L_max_clean = 0.9*w_C_l_max_clean # for zero sweep angle
 
     # targeted wing lift increase
-    w_Delta_C_L_target = w_C_L_max_target - w_C_l_max_clean
+    w_Delta_C_L_max_target = w_C_L_max_target - w_C_L_max_clean
 
-    w_S_flapped = w_S * w_Delta_C_L_target / 0.9 / foil_Delta_C_l_max
+    # required flapped wing area
+    w_S_flapped = w_S * w_Delta_C_L_max_target / 0.9 / Delta_C_l_max
 
-    w_span_flapped = w_S_flapped / (flaps_chord_fraction * w_chord)
+    w_flaps_outboard_station_plain = fus_width/2 + w_S_flapped/w_chord/2
 
-    w_flaps_span_stations = [2*y/w_span for y in [fus_width/2, fus_width/2 + w_span_flapped/2]]
-    
+    w_flaps_span_stations = [2*y/w_span for y in [fus_width/2, w_flaps_outboard_station_plain]]
+
     return w_flaps_span_stations
 
 #---- NEUTRAL POINT ----
