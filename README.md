@@ -16,9 +16,10 @@ _Example :_ The wing surface area is represented by the variable `w_S`
 List of component prefixes :
 - `fus` : fuselage
 - `w` : wing
+- `tail` : tail/empennage
 - `ht` : horizontal tailplane
 - `vt` : vertical taiplane
-- `ref` : reference value (for $S_{ref}$, $c_{ref}, ...)
+- `ref` : reference value (for $S_{ref}$, $c_{ref}$, ...)
 - `np` : neutral point
 
 ## References

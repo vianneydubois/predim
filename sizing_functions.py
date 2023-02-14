@@ -39,7 +39,6 @@ def flaps_sizing(flaps_chord_fraction, foil_C_l_max):
     
     return w_flaps_span_stations
 
-
 #---- NEUTRAL POINT ----
 def neutral_point(ht_arm, ht_S, ht_AR):
 
