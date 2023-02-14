@@ -10,7 +10,7 @@
 - `sizing_functions.py` : sets all other Jupyter Notebooks into functions than can be used for sizing loops
 
 ## Variables naming
-Generic : a variable containing the value of property `prop` of the component `comp` is written `comp_prop`. 
+Generic : a variable containing the value of property `prop` of the component `comp` is written `comp_prop`. "Components" can be virtual, see `ref`or `np`. 
 _Example :_ The wing surface area is represented by the variable `w_S`
 
 List of component prefixes :
@@ -18,7 +18,8 @@ List of component prefixes :
 - `w` : wing
 - `ht` : horizontal tailplane
 - `vt` : vertical taiplane
-- `ref` : reference value
+- `ref` : reference value (for $S_{ref}$, $c_{ref}, ...)
+- `np` : neutral point
 
 ## References
 

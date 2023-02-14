@@ -40,6 +40,33 @@ def flaps_sizing(flaps_chord_fraction, foil_C_l_max):
     return w_flaps_span_stations
 
 
+#---- NEUTRAL POINT ----
+def neutral_point(ht_arm, ht_S, ht_AR):
+
+    #---- AERODYNAMICS ----
+    # /!\ Aerodynamic coefficients are nondimensionalied using the local characteristic dimension, not ref_S
+    # Ex : fot the HTP, C_L_alpha is nondimensionalised by ht_S, not w_S
+
+    # wing lift gradient coefficient
+    w_C_L_alpha = np.pi * w_AR / (1 + np.sqrt(1 + (np.pi * w_AR / w_C_l_alpha)**2) )
+    # wing AC position
+    w_AC_x = 0.25*w_chord
+
+    # ht lift gradient coefficient /!\ : non-dimensionalised with Sref = ht_S
+    ht_C_L_alpha = np.pi * ht_AR / (1 + np.sqrt(1 + (np.pi * ht_AR / ht_C_l_alpha)**2) )
+    # ht AC position
+    ht_AC_x = w_AC_x + ht_arm
+
+    # ht efficiency -- should be around 0.6-0.75
+    ht_eta = 1 - 8*w_C_L_alpha/np.pi**3/w_AR * (1 + 1/np.cos(np.arctan(w_span*np.pi/8/ht_arm)))
+
+    
+    #---- NEUTRAL POINT
+    np_x = (w_C_L_alpha*w_S*w_AC_x + ht_eta*ht_C_L_alpha*ht_S*ht_AC_x - 2*fus_volume ) \
+    / (w_C_L_alpha*w_S + ht_eta*ht_C_L_alpha*ht_S )
+
+    return np_x
+
 #---- PARASITIC DRAG ----
 def parasitic_drag(\
         V, w_x_tr, skin_roughness,\
