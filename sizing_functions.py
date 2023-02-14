@@ -24,14 +24,14 @@ def tailplane_sizing(ht_V, ht_arm, ht_AR, ht_taper, \
     return [[ht_S, ht_span, ht_root_chord],[vt_S, vt_span, vt_root_chord]]
 
 #---- TE FLAPS ----
-def flaps_sizing(flaps_chord_fraction, foil_C_l_max):
+def flaps_sizing(flaps_chord_fraction, foil_Delta_C_l_max):
     # WING
     w_C_L_max_clean = 0.9*w_C_l_max_clean # for zero sweep angle
 
     # targeted wing lift increase
     w_Delta_C_L_target = w_C_L_max_target - w_C_l_max_clean
 
-    w_S_flapped = w_S * w_Delta_C_L_target / 0.9 / foil_C_l_max
+    w_S_flapped = w_S * w_Delta_C_L_target / 0.9 / foil_Delta_C_l_max
 
     w_span_flapped = w_S_flapped / (flaps_chord_fraction * w_chord)
 
