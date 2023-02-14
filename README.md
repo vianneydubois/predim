@@ -21,6 +21,7 @@ List of component prefixes :
 - `ref` : reference value (for $S_{ref}$, $c_{ref}$, ...)
 - `np` : neutral point
 
+Be careful reading lift coefficients :
 - `C_l` : **aerofoil** lift coefficient
 - `C_L` : **wing** lift coefficient
 
