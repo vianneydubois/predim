@@ -68,10 +68,48 @@ def neutral_point(ht_arm, ht_S, ht_AR):
     return np_x
 
 #---- PARASITIC DRAG ----
-def parasitic_drag(\
-        V, skin_roughness, w_x_tr, \
-        ht_dim, ht_x_tr, vt_dim, vt_x_tr,\
-        fus_S_wet, fus_x_tr):
+def parasitic_drag(
+        V: float,
+        w_x_tr: float,
+        ht_dim: list,
+        ht_x_tr: float,
+        vt_dim: list,
+        vt_x_tr: float,
+        fus_S_wet: float,
+        fus_x_tr: float,
+        pusher:bool = True
+        )->float:
+    """
+    Computes parasitic drag coefficient C_D0
+    
+    Parameters
+    ----------
+    V : float
+        Airspeed at which drag is estimated
+    w_x_tr : float
+        wing transition point
+    ht_dim: list
+        Horizontal stabiliser dimensions
+        Format : [surface, span, chord, t/c, x(max t/c)]
+    ht_x_tr : float
+        Horizontal stabiliser transition point
+    vt_dim: list
+        Vertical stabiliser dimensions
+        Format : [surface, span, chord, t/c, x(max t/c)]
+    vt_x_tr : float
+        Vertical stabiliser transition point
+    fus_S_wet : float
+        fuselage wetted surface area
+    fus_x_tr : float
+        fuselage transition point
+    pusher : bool, optional
+        A flag to indicate a pusher configuration (default is False)
+
+    Returns
+    -------
+    float
+        estimated parasitic drag coefficient
+    """
 
     ht_S, ht_span, ht_chord, ht_t_c, ht_x_c_max_t = ht_dim
     vt_S, vt_span, vt_chord, vt_t_c, vt_x_c_max_t = vt_dim
@@ -228,17 +266,22 @@ def parasitic_drag(\
 
     # aft-fuselage upsweep angle separation drag
     # Neglidated for pusher propeller configuration if upsweep angle < 30 deg
-    upsweep_C_D_0 = 0
+    if not pusher:
+        upsweep_C_D_0 = 3.83*(np.deg2rad(fus_upsweep)**2.5) * (fus_width*fus_height)/w_S
+    else :
+        upsweep_C_D_0 = 0
 
     # LANDING GEAR
     # Main langind gear : MLG
     # length = 0.35m, thickness = 3mm
-    mlg_leg_C_D_0 = 2 * 1.40 * (0.35*3e-3) / w_S
-    mlg_wheel_C_D_0 = 2 * 0.25 * 0.0020 / w_S # assuming 20cm^2 for wheel frontal area
+    mlg_leg_length = np.sqrt( (lg_height-lg_wheel_diam/2)**2 + ((lg_track-fus_width)/2)**2 )
+    print(mlg_leg_length)
+    mlg_leg_C_D_0 = 2 * 1.40 * (mlg_leg_length * lg_maine_strut_thickness) / w_S
+    mlg_wheel_C_D_0 = 2 * 0.25 * lg_wheel_diam*lg_wheel_thickness / w_S
 
     # nose langing gear : NLG
-    nlg_strut_C_D_0 = 1.17 * (0.25 * 1e-2) / w_S
-    nlg_wheel_C_D_0 = 0.25 * (0.0020) / w_S
+    nlg_strut_C_D_0 = 1.17 * (lg_height * lg_nose_leg_diam) / w_S
+    nlg_wheel_C_D_0 = 0.25 * (lg_wheel_thickness*lg_wheel_diam) / w_S
 
     # undercarriage parasitic drag (+20% for interence drag, cf Raymer)
     lg_C_D_0 = (mlg_leg_C_D_0 + mlg_wheel_C_D_0 + nlg_strut_C_D_0 +nlg_wheel_C_D_0) * 1.2
