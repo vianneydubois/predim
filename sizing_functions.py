@@ -184,7 +184,6 @@ def parasitic_drag(
     # wing parasitic drag surface
     w_S_D_0 = w_C_f * w_FF * w_Q * w_S_wet
 
-
     #---- HORIZONTAL TAILPLANE ----
 
     ht_Re_cutoff = Re_cutoff(ht_chord, skin_roughness)
@@ -208,7 +207,6 @@ def parasitic_drag(
     # ht parasitic drag surface
     ht_S_D_0 = ht_C_f * ht_FF * ht_Q * ht_S_wet
 
-
     #---- VERTICAL TAILPLANE ----
 
     vt_Re_cutoff = Re_cutoff(vt_chord, skin_roughness)
@@ -231,7 +229,6 @@ def parasitic_drag(
 
     # vt parasitic drag surface
     vt_S_D_0 = vt_C_f * vt_FF * vt_Q * vt_S_wet
-
 
     #---- FUSELAGE ----
 
@@ -258,7 +255,6 @@ def parasitic_drag(
 
     #---- PARASITIC FRICTION DRAG COEFFICIENT ----
     C_D_0_f = (w_S_D_0 + ht_S_D_0 + vt_S_D_0 + fus_S_D_0) / w_S
-
 
     #-------------------
     #---- MISC DRAG ----
@@ -288,13 +284,11 @@ def parasitic_drag(
 
     C_D_0_misc = lg_C_D_0 + upsweep_C_D_0
 
-
     #---------------------------
     #---- PROTUBERANCE DRAG ----
     #---------------------------
 
     C_D_0_protuberance_factor = 1.1 # 1.05 to 1.10 (Raymer) for SE propeller aircraft
-
 
     #------------------------------
     #---- TOTAL PARASITIC DRAG ----
@@ -303,3 +297,53 @@ def parasitic_drag(
     C_D_0 = (C_D_0_f + C_D_0_misc) * C_D_0_protuberance_factor
 
     return C_D_0
+
+
+def aileron_sizing(
+    helix_angle: float,
+    delta_a_max: float,
+    chord_ratio: float,
+    system_stretch: float = 1.,
+    y_o: float = 1.
+    )->float:
+    """
+    Finds estimate of aileron inboard edge spanwise station for a given helix angle requirement.
+    Follows methods from S. Gudmunsson.
+    
+    Parameters
+    ----------
+    helix_angle : float
+        pb/2V : angle of the helicoidal movement of the aeroplane in steady state roll
+    delta_A_max : float
+        maximum aileron deflection angle
+    chord_ratio : float
+        aileron chord/ aerofoil chord ratio
+    system_strech : float
+        aileron deflection reduction due to control  system streching.
+        0 means no actual deflection, 1 means no stretching (default is 1.)
+    y_o : float
+        Nondimensionalised aileron outboard edge spanwise station (default is 1.)
+
+    Returns
+    -------
+    float
+        Non dimensionalised aileron inboard edge spanwise station
+    
+    """
+    
+    # roll damping coefficient C_l_p (Gudmunsson)
+    C_roll_p = - w_C_l_alpha / 6
+
+    # actual aileron deflection, control system stretch taken into account
+    delta_a_max_actual = delta_a_max * system_stretch
+    
+    # polar coordinate
+    theta_a = np.arccos(2*(1-chord_ratio) - 1)
+
+    # aerofoil lift increase due to aileron, from thin aerofoil theory
+    C_l_delta_a = 2* (theta_a + np.sin(theta_a))
+
+    # inboard aileron edge spanwise station
+    y_i = np.sqrt(4 * helix_angle * C_roll_p / C_l_delta_a / delta_a_max_actual + (y_o)**2)
+
+    return y_i

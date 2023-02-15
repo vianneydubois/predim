@@ -25,6 +25,10 @@ Be careful reading lift coefficients :
 - `C_l` : **aerofoil** lift coefficient
 - `C_L` : **wing** lift coefficient
 
+Roll coefficients :
+- `C_roll` is the roll moment coefficient usually written $C_l$
+- `C_roll_delta_a` is the aileron roll control derivative usually writte $C_{l,\delta_A}$
+
 ## References
 
 - _General Aviation Aircraft Design. Applied Methods and Procedures_, Snorri Gudmundsson
