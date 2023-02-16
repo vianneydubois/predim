@@ -1,10 +1,41 @@
 import numpy as np
 from input import *
 
+# to be done
+# - in tailplane_sizing : remove ref S, c, b
+# - finish tailplane sizing documentation
+
 #---- TAILPLANE ----
-def tailplane_sizing(ht_V, ht_arm, ht_AR, ht_taper, \
-        vt_V, vt_arm, vt_AR, vt_taper, \
-        ref_S, ref_chord, ref_span):
+def tailplane_sizing(
+        ht_V: float,
+        ht_arm: float,
+        ht_AR: float,
+        ht_taper: float,
+        vt_V: float,
+        vt_arm: float,
+        vt_AR: float,
+        vt_taper: float,
+        ref_S: float,
+        ref_chord: float,
+        ref_span: float
+        ) -> list:
+    """
+    Calculates horizontal and vertical tailplanes dimensions according to the tail volume coefficients method
+    
+    Parameters
+    ----------
+    ht_V : float
+        Horizontal tailplane (HT) volume coefficient
+
+    Returns
+    -------
+    list
+        list of dimensions fot HT and VT [ht_dim, vt_dim]
+        ht_dim = []
+        vt_dim = []
+    
+    """
+
 
     # horizontal and vertical stabilisers : surface area
     ht_S = ht_V * ref_S * ref_chord / ht_arm
@@ -24,7 +55,9 @@ def tailplane_sizing(ht_V, ht_arm, ht_AR, ht_taper, \
     return [[ht_S, ht_span, ht_root_chord],[vt_S, vt_span, vt_root_chord]]
 
 #---- TE FLAPS ----
-def flaps_sizing(Delta_C_l_max):
+def flaps_sizing(
+        Delta_C_l_max: float
+        ) -> float:
     """
     Calculates the flaps outboard edge spanwise station
     
@@ -55,7 +88,30 @@ def flaps_sizing(Delta_C_l_max):
     return w_flaps_span_stations
 
 #---- NEUTRAL POINT ----
-def neutral_point(ht_arm, ht_S, ht_AR):
+def neutral_point(
+        ht_arm: float,
+        ht_S: float,
+        ht_AR: float
+        ) -> float:
+    """
+    Calculates the longitudinal neutral point location
+    
+    Parameters
+    ----------
+    ht_arm : float
+        Horizontal tailplane (HT) moment arm : distance from wing aerodynamic centre (AC) to HT AC
+    ht_S : float
+        HT surface area
+    ht_AR : float
+        HT aspect ratio
+
+    Returns
+    -------
+    float
+        Flaps outboard edge spanwise station (as a fraction of semi-wingspan)
+    
+    """
+
 
     #---- AERODYNAMICS ----
     # /!\ Aerodynamic coefficients are nondimensionalied using the local characteristic dimension, not ref_S
@@ -92,7 +148,7 @@ def parasitic_drag(
         fus_S_wet: float,
         fus_x_tr: float,
         pusher:bool = True
-        )->float:
+        ) -> float:
     """
     Computes parasitic drag coefficient C_D0
     
@@ -318,7 +374,7 @@ def aileron_sizing(
     chord_ratio: float,
     system_stretch: float = 1.,
     y_o: float = 1.
-    )->float:
+    ) -> float:
     """
     Finds estimate of aileron inboard edge spanwise station for a given helix angle requirement.
     Follows methods from S. Gudmunsson.
