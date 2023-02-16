@@ -24,7 +24,21 @@ def tailplane_sizing(ht_V, ht_arm, ht_AR, ht_taper, \
     return [[ht_S, ht_span, ht_root_chord],[vt_S, vt_span, vt_root_chord]]
 
 #---- TE FLAPS ----
-def flaps_sizing(flaps_chord_fraction, Delta_C_l_max):
+def flaps_sizing(Delta_C_l_max):
+    """
+    Calculates the flaps outboard edge spanwise station
+    
+    Parameters
+    ----------
+    Delta_C_l_max : float
+        aerofoil lift increase due to flaps
+
+    Returns
+    -------
+    float
+        Flaps outboard edge spanwise station (as a fraction of semi-wingspan)
+    
+    """
     # WING
     w_C_L_max_clean = 0.9*w_C_l_max_clean # for zero sweep angle
 
@@ -298,7 +312,7 @@ def parasitic_drag(
 
     return C_D_0
 
-
+#---- AILERON SIZING ----
 def aileron_sizing(
     helix_angle: float,
     delta_a_max: float,
@@ -313,7 +327,7 @@ def aileron_sizing(
     Parameters
     ----------
     helix_angle : float
-        pb/2V : angle of the helicoidal movement of the aeroplane in steady state roll
+        pb/2V : angle of the helicoidal movement followed by the aeroplane in steady state roll
     delta_A_max : float
         maximum aileron deflection angle
     chord_ratio : float
