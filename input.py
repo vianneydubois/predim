@@ -7,7 +7,7 @@ fus_volume = 0.1
 fus_upsweep = 10 # /!\ CENTRELINE upsweep angle in DEGREES
 
 #---- PERFORMANCE ----
-MTOW = 24
+mtow = 24
 # lift requirement 
 w_C_L_max_target = 2.1
 
