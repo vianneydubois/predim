@@ -1,19 +1,25 @@
 # UAV sizing tools
 
 ## Files
-- `predim.ipynb` : initial sizing, providing constraint diagrams for $W/S$ and $P/W$
-- `input.py` : defines the key parameters of the aeroplane design, that can remain constant during the sizing process : wing planform geometry, mass...
+
+### For sizing process
+- `predim.ipynb` : initial sizing, provides constraint diagrams for $W/S$ and $P/W$
+- `input.py` : defines the values of key parameters for the aeroplane design, that can remain constant during the sizing process : wing planform geometry, aerofoils, mass...
+- `sizing_functions.py` : sets all other Jupyter Notebooks into functions than can be used for sizing loops **(used for sizing)**
+- `sizing_main.ipynb` : calls the sizing functions, plots and displays the sizing process outputs
+
+### For test only
 - `tailplane.ipynb` : sizes the horizontal and vertical stabilisers according to the tailplane volume coefficients method
-- `aerodynamic_centre.ipynb` : computes the longitudinal location of the neutral point for a given wing-tailplane configuration. **MUST BE RENAMED TO `neutral_point.ipynb`**
+- `aerodynamic_centre.ipynb` : computes the longitudinal location of the neutral point for a given wing-tailplane configuration. **MUST BE RENAMED `neutral_point.ipynb`
 - `parasitic_drag.ipynb` : using Raymer's component buildup method, computes the parasitic drag coefficent $C_{D0}$
 - `flaps.ipynb` : provides an estimation of the spanwise length of flaps required to achieve the targat $C_{Lmax}$
-- `sizing_functions.py` : sets all other Jupyter Notebooks into functions than can be used for sizing loops
+- `ailerons.ipynb` : computes the aileron edge inboard spanwise station for a given manoeuvring criteria
 
 ## Variables naming and notation
 A variable containing the value of property `prop` of the component `comp` is written `comp_prop`. "Components" can be virtual, see `ref`or `np`. 
 _Example :_ The wing surface area is represented by the variable `w_S`
 
-List of component prefixes :
+List (non exhaustive) of component prefixes :
 - `fus` : fuselage
 - `w` : wing
 - `ht` : horizontal tailplane
@@ -27,11 +33,14 @@ Be careful reading lift coefficients :
 
 Roll coefficients :
 - `C_roll` is the roll moment coefficient usually written $C_l$
-- `C_roll_delta_a` is the aileron roll control derivative usually writte $C_{l,\delta_A}$
+- `C_roll_delta_a` is the aileron roll control derivative $\dfrac{\partial C_l}{\partial \delta_A}$ usually written $C_{l,\delta_A}$
 
 ## References
 
-- _General Aviation Aircraft Design. Applied Methods and Procedures_, Snorri Gudmundsson
-- _Aircraft Design : A Conceptual Approach_, Daniel P. Raymer
-- _Aérodynamique Avancée de l'Avion_, lecture notes, Jean-Marc Moschetta
+- _General Aviation Aircraft Design. Applied Methods and Procedures_, Second Edition, Snorri Gudmundsson, 2021
+- _Aircraft Design : A Conceptual Approach_, Sixth Edition, Daniel P. Raymer, 2018
+- _Aérodynamique Avancée de l'Avion_, lecture notes, Jean-Marc Moschetta, 2022
+- _Summary of Low-Speed Airfoil Data_, Volume 2, Michael S. Selig, Christopher A. Lyon, Philippe Giguere, Cameron P. Ninham, James J. Guglielmo, 1996
 
+## Contact
+* Vianney Dubois : vianney.dubois[at]student.isae-supaero.fr
