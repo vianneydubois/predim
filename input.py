@@ -2,8 +2,16 @@
 fus_width = 0.252
 fus_height = 0.252
 fus_length = 2.085
+fus_nose_length = 0.21
+fus_tail_length = 0.5445
+
+# nose = half sphere, tail = square base pyramid
+fus_volume = 0.5 * 4/3 * 3.142 * (fus_width/2)**3 \
+    + (fus_length -fus_nose_length - fus_tail_length) * fus_width * fus_height \
+    + (fus_width * fus_height) * fus_tail_length /3
+
 fus_S_wet = 1.6
-fus_volume = 0.1
+
 fus_upsweep = 10 # /!\ CENTRELINE upsweep angle in DEGREES
 
 #---- PERFORMANCE ----
