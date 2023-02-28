@@ -415,3 +415,48 @@ def aileron_sizing(
     y_i = np.sqrt(4 * helix_angle * C_roll_p / C_l_delta_a / delta_a_max_actual + (y_o)**2)
 
     return y_i
+
+#---- LANDING GEAR ANALYSIS ----
+def landing_gear_analysis(
+    mlg_x: float,
+    nlg_x: float,
+    mlg_track: float,
+    lg_height: float,
+    tailstrike_margin: float,
+    cg_x: float,
+    prop_x: float
+    ) -> float:
+    """
+    Description
+    
+    Parameters
+    ----------
+    helix_angle : float
+        pb/2V : angle of the helicoidal movement followed by the aeroplane in steady state roll
+
+    Returns
+    -------
+    float
+        Non dimensionalised aileron inboard edge spanwise station
+    
+    """
+    
+    gnd_z = lg_height + fus_height/2 # ground z position from ref point, positive downwards
+
+    # overturn angle
+    overturn_angle = np.arctan( (gnd_z - cg_z) \
+        / ((cg_x - mlg_x) * np.sin( np.arctan(mlg_track / (2 * (mlg_x - nlg_x))))) )
+
+    # NLG downforce fraction
+    nlg_downforce_fraction = (mlg_x - cg_x) / (mlg_x - nlg_x)
+
+    # tipback angle limit
+    h = gnd_z - prop_axis_z # ground to propeller axis distance
+    D = prop_x - mlg_x # propeller to MLG x distance
+    prop_radius = prop_diameter/2 # propeller radius
+    OC = np.sqrt((h - prop_radius)**2 + D**2) # MLG to propeller tip distance
+
+    tipback_limit = np.arcsin(tailstrike_margin/OC) - np.arctan((h - prop_radius)/D)
+
+    return [overturn_angle, nlg_downforce_fraction, tipback_limit]
+

@@ -15,12 +15,11 @@ fus_S_wet = 0.5 * 4 * 3.142 * (fus_width/2)**2 \
     + (fus_length - fus_nose_length - fus_tail_length) * (2 * fus_width + 2 * fus_height) \
     + 2 * fus_width*fus_tail_length/2 + 2 * fus_height*fus_tail_length/2
 
-fus_upsweep = 10 # /!\ CENTRELINE upsweep angle in DEGREES
+fus_upsweep = 10 # /!\ upsweep angle (following the CENTRELINE) in DEGREES
 
 #---- PERFORMANCE ----
 mtow = 24 # kg
-# lift requirement 
-w_C_L_max_target = 2.1
+w_C_L_max_target = 2.1 # lift requirement 
 
 #---- WING ----
 w_AR = 8 # wing aspect ratio
@@ -50,11 +49,15 @@ lg_wheel_diam = 0.10
 lg_wheel_thickness = 0.02
 lg_main_strut_thickness = 3e-3 # thickness of MLG strut
 lg_nose_leg_diam = 10e-3 # diameter of NLG leg
-lg_nose_x = -1.0
-lg_main_x = 0.5
-lg_track = 0.75 # MLG wheel to wheel distance
+lg_nose_x = -1.0 # NLG x position
+lg_main_x = 0.5 # MLG x position
+lg_track = 0.75 # MLG track (wheel to wheel distance)
 
+
+#---- PROPELLER ----
+prop_diameter = 0.5 # propeller diameter
+prop_axis_z = -0.035 # propeller shaft axis z postion
 
 #---- MISC -----
 skin_roughness = 0.634e-5 # [m], for smooth paint (Raymer)
-cg_z = 0
+cg_z = - fus_height/2 # CG z position, assumed to be along the fuselage centreline
