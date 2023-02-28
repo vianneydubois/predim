@@ -18,7 +18,7 @@ fus_S_wet = 0.5 * 4 * 3.142 * (fus_width/2)**2 \
 fus_upsweep = 10 # /!\ CENTRELINE upsweep angle in DEGREES
 
 #---- PERFORMANCE ----
-mtow = 24
+mtow = 24 # kg
 # lift requirement 
 w_C_L_max_target = 2.1
 
@@ -46,12 +46,14 @@ vt_x_c_max_t = 0.3
 
 #---- LANDING GEAR ----
 lg_height = 0.25
-lg_track = 0.75 # MLG wheel to wheel distance
 lg_wheel_diam = 0.10
 lg_wheel_thickness = 0.02
-lg_maine_strut_thickness = 3e-3 # thickness of MLG strut
+lg_main_strut_thickness = 3e-3 # thickness of MLG strut
 lg_nose_leg_diam = 10e-3 # diameter of NLG leg
 lg_nose_x = -1.0
+lg_main_x = 0.5
+lg_track = 0.75 # MLG wheel to wheel distance
+
 
 #---- MISC -----
 skin_roughness = 0.634e-5 # [m], for smooth paint (Raymer)

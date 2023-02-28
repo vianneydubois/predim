@@ -36,7 +36,6 @@ def tailplane_sizing(
     
     """
 
-
     # horizontal and vertical stabilisers : surface area
     ht_S = ht_V * ref_S * ref_chord / ht_arm
     vt_S = vt_V * ref_S * ref_span / vt_arm
@@ -341,7 +340,7 @@ def parasitic_drag(
     # Main langind gear : MLG
     # length = 0.35m, thickness = 3mm
     mlg_leg_length = np.sqrt( (lg_height-lg_wheel_diam/2)**2 + ((lg_track-fus_width)/2)**2 )
-    mlg_leg_C_D_0 = 2 * 1.40 * (mlg_leg_length * lg_maine_strut_thickness) / w_S
+    mlg_leg_C_D_0 = 2 * 1.40 * (mlg_leg_length * lg_main_strut_thickness) / w_S
     mlg_wheel_C_D_0 = 2 * 0.25 * lg_wheel_diam*lg_wheel_thickness / w_S
 
     # nose langing gear : NLG
