@@ -51,6 +51,8 @@ lg_wheel_diam = 0.10
 lg_wheel_thickness = 0.02
 lg_maine_strut_thickness = 3e-3 # thickness of MLG strut
 lg_nose_leg_diam = 10e-3 # diameter of NLG leg
+lg_nose_x = -1.0
 
 #---- MISC -----
 skin_roughness = 0.634e-5 # [m], for smooth paint (Raymer)
+cg_z = 0
