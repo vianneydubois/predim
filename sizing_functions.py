@@ -469,7 +469,7 @@ def landing_gear_analysis(
 
     # overturn angle
     overturn_angle = np.arctan( (gnd_z - cg_z) \
-        / ((cg_x - mlg_x) * np.sin( np.arctan(mlg_track / (2 * (mlg_x - nlg_x))))) )
+        / ((cg_x - nlg_x) * np.sin( np.arctan(mlg_track / (2 * (mlg_x - nlg_x))))) )
 
     # NLG downforce fraction
     nlg_downforce_fraction = (mlg_x - cg_x) / (mlg_x - nlg_x)

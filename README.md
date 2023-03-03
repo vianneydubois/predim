@@ -1,8 +1,8 @@
-# UAV sizing tools
+# UAV sizing and analysis tools
 
 ## Files
 
-### For sizing process
+### For sizing and analysis process
 - `predim.ipynb` : initial sizing, provides constraint diagrams for $W/S$ and $P/W$
 - `input.py` : defines the values of key parameters for the aeroplane design, that can remain constant during the sizing process : wing planform geometry, aerofoils, mass...
 - `sizing_functions.py` : sets all other Jupyter Notebooks into functions than can be used for sizing loops **(used for sizing)**
@@ -14,6 +14,7 @@
 - `parasitic_drag.ipynb` : using Raymer's component buildup method, computes the parasitic drag coefficent $C_{D0}$
 - `flaps.ipynb` : provides an estimation of the spanwise length of flaps required to achieve the targat $C_{Lmax}$
 - `ailerons.ipynb` : computes the aileron edge inboard spanwise station for a given manoeuvring criteria
+- 'landing_gear.ipynb' : analyses an undercarriage geometry : overturn angle, nose landing gear loading, max tipback angle
 
 ## Variables naming and notation
 A variable containing the value of property `prop` of the component `comp` is written `comp_prop`. "Components" can be virtual, see `ref`or `np`. 
