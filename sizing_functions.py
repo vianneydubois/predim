@@ -146,6 +146,8 @@ def parasitic_drag(
         vt_x_tr: float,
         fus_S_wet: float,
         fus_x_tr: float,
+        lg_height: float,
+        lg_track: float,
         pusher:bool = True
         ) -> float:
     """
@@ -171,6 +173,10 @@ def parasitic_drag(
         fuselage wetted surface area
     fus_x_tr : float
         fuselage transition point
+    lg_height : float
+        Landing gear height (ground to fuselage vertical distance)
+    lg_track : float
+        Main landing gear track (wheel to wheel transversal distance)
     pusher : bool, optional
         A flag to indicate a pusher configuration (default is False)
 
