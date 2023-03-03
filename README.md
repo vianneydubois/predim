@@ -10,7 +10,7 @@
 
 ### For test only
 - `tailplane.ipynb` : sizes the horizontal and vertical stabilisers according to the tailplane volume coefficients method
-- `aerodynamic_centre.ipynb` : computes the longitudinal location of the neutral point for a given wing-tailplane configuration. **MUST BE RENAMED `neutral_point.ipynb`
+- `aerodynamic_centre.ipynb` : computes the longitudinal location of the neutral point for a given wing-tailplane configuration. **MUST BE RENAMED `neutral_point.ipynb`**
 - `parasitic_drag.ipynb` : using Raymer's component buildup method, computes the parasitic drag coefficent $C_{D0}$
 - `flaps.ipynb` : provides an estimation of the spanwise length of flaps required to achieve the targat $C_{Lmax}$
 - `ailerons.ipynb` : computes the aileron edge inboard spanwise station for a given manoeuvring criteria
