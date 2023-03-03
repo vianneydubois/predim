@@ -425,19 +425,37 @@ def landing_gear_analysis(
     tailstrike_margin: float,
     cg_x: float,
     prop_x: float
-    ) -> float:
+    ) -> list:
     """
-    Description
+    Description...
     
     Parameters
     ----------
-    helix_angle : float
-        pb/2V : angle of the helicoidal movement followed by the aeroplane in steady state roll
+    mlg_x : float
+        Main landing gear longitudinal position
+    nlg_x : float
+        Nose landing gear longitudinal position
+    mlg_track : float
+        Main landing gear track (wheel to wheel transversal distance)
+    lg_height : float
+        Landing gear height : ground to fuselage vertical distance
+    tailstrike_margin : float
+        Minimal vertical spacing between propeller tip and ground when pitched up on the ground (aft-mounted propeller)
+    cg_x : float
+        Centre of gravity longitudinal position
+    prop_x : float
+        Propeller longitudinal position (tail of fuselage fo an aft-mounted propeller)
 
     Returns
     -------
-    float
-        Non dimensionalised aileron inboard edge spanwise station
+    list
+        [overturn_angle, nlg_downforce_fraction, tipback_limit]
+    overturn_angle : float
+        Overturn angle
+    nlg_downforce_fraction : float
+        Fraction of the aircraft weight carried by the nose landing gear
+    tipback_limit: float
+        Max tipback angle before reaching the specified tailstrike margin
     
     """
     
