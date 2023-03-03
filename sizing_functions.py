@@ -56,7 +56,7 @@ def tailplane_sizing(
 #---- TE FLAPS ----
 def flaps_sizing(
         Delta_C_l_max: float
-        ) -> float:
+        ) -> list:
     """
     Calculates the flaps outboard edge spanwise station
     
@@ -67,8 +67,8 @@ def flaps_sizing(
 
     Returns
     -------
-    float
-        Flaps outboard edge spanwise station (as a fraction of semi-wingspan)
+    list
+        Flaps edges spanwise stations (as fractions of semi-wingspan)
     
     """
     # WING
