@@ -460,8 +460,10 @@ def landing_gear_analysis(
         Overturn angle
     nlg_downforce_fraction : float
         Fraction of the aircraft weight carried by the nose landing gear
-    tipback_limit: float
-        Max tipback angle before reaching the specified tailstrike margin
+    tailstrike_limit: float
+        Max noseup angle before reaching the specified tailstrike margin
+    tipback_angle: float
+        Max nosepup angle before CG moves aft of MLG and the aircraft tips back
     
     """
     
@@ -481,7 +483,10 @@ def landing_gear_analysis(
     OC = np.sqrt((h - prop_radius)**2 + D**2) # MLG to propeller tip distance
 
     #tipback_limit = np.arcsin(tailstrike_margin/OC) - np.arctan((h - prop_radius)/D)
-    tipback_limit = np.tan((h - prop_radius)/D) - np.arcsin(tailstrike_margin/OC)
+    tailstrike_limit = np.tan((h - prop_radius)/D) - np.arcsin(tailstrike_margin/OC)
 
-    return [overturn_angle, nlg_downforce_fraction, tipback_limit]
+    tipback_angle = np.arctan((mlg_x - cg_x)/(gnd_z - cg_z))
+
+
+    return [overturn_angle, nlg_downforce_fraction, tailstrike_limit, tipback_angle]
 
