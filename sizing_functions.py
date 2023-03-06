@@ -476,11 +476,12 @@ def landing_gear_analysis(
 
     # tipback angle limit
     h = gnd_z - prop_axis_z # ground to propeller axis distance
-    D = prop_x - mlg_x # propeller to MLG x distance
+    D = prop_x - mlg_x # propeller to MLG X-distance
     prop_radius = prop_diameter/2 # propeller radius
     OC = np.sqrt((h - prop_radius)**2 + D**2) # MLG to propeller tip distance
 
-    tipback_limit = np.arcsin(tailstrike_margin/OC) - np.arctan((h - prop_radius)/D)
+    #tipback_limit = np.arcsin(tailstrike_margin/OC) - np.arctan((h - prop_radius)/D)
+    tipback_limit = np.tan((h - prop_radius)/D) - np.arcsin(tailstrike_margin/OC)
 
     return [overturn_angle, nlg_downforce_fraction, tipback_limit]
 

@@ -45,10 +45,10 @@ vt_x_c_max_t = 0.3
 
 #---- LANDING GEAR ----
 #lg_height = 0.25
-lg_wheel_diam = 0.10
-lg_wheel_thickness = 0.02
-lg_main_strut_thickness = 3e-3 # thickness of MLG strut
-lg_nose_leg_diam = 10e-3 # diameter of NLG leg
+lg_wheel_diam = 0.15
+lg_wheel_thickness = 0.03
+lg_main_strut_thickness = 5e-3 # thickness of MLG strut
+lg_nose_leg_diam = 15e-3 # diameter of NLG leg
 #lg_nose_x = -1.0 # NLG x position
 #lg_main_x = 0.5 # MLG x position
 #lg_track = 0.75 # MLG track (wheel to wheel distance)
@@ -57,6 +57,7 @@ lg_nose_leg_diam = 10e-3 # diameter of NLG leg
 #---- PROPELLER ----
 prop_diameter = 0.5 # propeller diameter
 prop_axis_z = -0.035 # propeller shaft axis z postion
+prop_shaft_length = 0.05 # x distance from fuselage aft section to propeller disc
 
 #---- MISC -----
 skin_roughness = 0.634e-5 # [m], for smooth paint (Raymer)
